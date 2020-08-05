@@ -9,6 +9,34 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const util = require("util");
+
+const writeFileAsync = util.promisify(fs.writeFile);
+
+function promptUser(answers) {
+  return inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "role",
+        message: "What is your role?",
+        choices: ["Manager", "Engineer", "Intern"],
+      },
+    ])
+    .then((answers) => {
+      if (answers.role === "Manager") {
+        addManager();
+      } else if (answers.role === "Engineer") {
+        addEngineer();
+      } else if (answers.role === "Intern") {
+        addIntern();
+      }
+    });
+}
+
+function addManager(answers) {
+  inquirer.prompt([{}]);
+}
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
