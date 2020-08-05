@@ -18,8 +18,8 @@ function promptUser(answers) {
     .prompt([
       {
         type: "list",
-        name: "role",
         message: "What is your role?",
+        name: "role",
         choices: ["Manager", "Engineer", "Intern"],
       },
     ])
@@ -35,7 +35,34 @@ function promptUser(answers) {
 }
 
 function addManager(answers) {
-  inquirer.prompt([{}]);
+  inquirer.prompt([
+    {
+      type: "input",
+      name: "managerName",
+      message: "What is the manager's name?",
+    },
+    {
+      type: "input",
+      name: "managerID",
+      message: "What is the manager's ID?",
+    },
+    {
+      type: "input",
+      name: "managerEmail",
+      message: "What is the manager's email?",
+    },
+    {
+      type: "input",
+      name: "managerOfficeNumber",
+      name: "What is the manager's office number?",
+    },
+    {
+      type: "list",
+      name: "addEmployee",
+      message: "Would you like to add another employee?",
+      choices: ["Yes", "No"],
+    },
+  ]);
 }
 
 // Write code to use inquirer to gather information about the development team members,
