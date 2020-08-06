@@ -12,6 +12,7 @@ const render = require("./lib/htmlRenderer");
 const util = require("util");
 
 const writeFileAsync = util.promisify(fs.writeFile);
+const employees = [];
 
 function promptUser(answers) {
   return inquirer
@@ -35,34 +36,56 @@ function promptUser(answers) {
 }
 
 function addManager(answers) {
-  inquirer.prompt([
-    {
-      type: "input",
-      name: "managerName",
-      message: "What is the manager's name?",
-    },
-    {
-      type: "input",
-      name: "managerID",
-      message: "What is the manager's ID?",
-    },
-    {
-      type: "input",
-      name: "managerEmail",
-      message: "What is the manager's email?",
-    },
-    {
-      type: "input",
-      name: "managerOfficeNumber",
-      name: "What is the manager's office number?",
-    },
-    {
-      type: "list",
-      name: "addEmployee",
-      message: "Would you like to add another employee?",
-      choices: ["Yes", "No"],
-    },
-  ]);
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "managerName",
+        message: "What is the manager's name?",
+      },
+      {
+        type: "input",
+        name: "managerID",
+        message: "What is the manager's ID?",
+      },
+      {
+        type: "input",
+        name: "managerEmail",
+        message: "What is the manager's email?",
+      },
+      {
+        type: "input",
+        name: "managerOfficeNumber",
+        name: "What is the manager's office number?",
+      },
+      {
+        type: "list",
+        name: "addEmployee",
+        message: "Would you like to add another employee?",
+        choices: ["Yes", "No"],
+      },
+    ])
+    .then((answers) => {
+      let manager = new Manager(
+        answers.managerName,
+        answers.managerID,
+        answers.managerEmail,
+        answers.managerOfficeNumber
+      );
+      employees.push(manager);
+      if (answers.addEmployee === "yes") {
+        promptUser();
+      } else {
+        // renderHTML();
+      }
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
+function addEngineer(answers) {
+  inquirer.prompt([{}]);
 }
 
 // Write code to use inquirer to gather information about the development team members,
