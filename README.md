@@ -13,15 +13,19 @@ This is a CLI application that is focused on creating an HTML file with the inpu
 
 ## Installation Instructions
 
-You can install the program by cloning it to your local machine by running git clone. Once you have succesfully cloned to your local machine, you can remove the existing README.md and run the index.js file in your VSCode terminal. Installation of node dependency 'Inquirer' is required.
+If SSH keys are installed, you can install the program by cloning it to your local machine by running git clone git@github.com:dolanpettit/Employee-Summary.git. Once you have succesfully cloned to your local machine, the "team.html" file should be deleted and the app.js file can be run using "node app". Be sure to install all required dependencies for application and testing purposes by running "npm i" in the command line.
 
 ## Usage Information
 
-After the program has been installed, run it using node index. You will be prompted with a series of relevant questions about the content of your markdown file. After the final prompt is answered, the program will write a new file called README.md.
+After the program has been installed, run it using node app. The application will first start off by asking what your role is as an employee. It will then ask for some boilerplate information such as name, ID number, and email. Depending on which role you've chosen, you will also be asked for some information specific to that role. For example, managers are prompted for their office number, engineers are prompted for the link to their github, and interns are prompted for the name of their school. After entering all employees necessary and selecting 'No" when prompted to add another employee, the application will generate the HTML file containing all of the teams information.
+
+View the demo: <a href="https://drive.google.com/file/d/1I7jE7V5uZQH9PDVn2SHJ9nVyaGgjyhdP/view">https://drive.google.com/file/d/1I7jE7V5uZQH9PDVn2SHJ9nVyaGgjyhdP/view</a>
 
 ## Test Instructions
 
-View my demo: <a href='https://drive.google.com/file/d/1Ybposh0IqzvgROBR15MHIAyOJhn_9slv/view'>https://drive.google.com/file/d/1Ybposh0IqzvgROBR15MHIAyOJhn_9slv/view</a>
+The test folder has all tests related to the application. To run the tests, enter "npm run test" in your command line.
+
+<img src="./images/testingsuite.png">
 
 # Questions
 
