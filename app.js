@@ -46,7 +46,7 @@ function addManager(answers) {
       {
         type: "input",
         name: "managerID",
-        message: "What is the manager's ID?",
+        message: "What is the manager's ID number?",
       },
       {
         type: "input",
@@ -85,9 +85,108 @@ function addManager(answers) {
 }
 
 function addEngineer(answers) {
-  inquirer.prompt([{}]);
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "engineerName",
+        message: "What is the engineer's name?",
+      },
+      {
+        type: "input",
+        name: "engineerID",
+        message: "What is the engineer's ID number?",
+      },
+      {
+        type: "input",
+        name: "engineerEmail",
+        message: "What is the engineer's email address?",
+      },
+      {
+        type: "input",
+        name: "engineerGithub",
+        message: "What is the engineer's github link?",
+      },
+      {
+        type: "list",
+        name: "addEmployee",
+        message: "Would you like to add another employee?",
+        choices: ["Yes", "No"],
+      },
+    ])
+    .then((answers) => {
+      let engineer = new Engineer(
+        answers.engineerName,
+        answers.engineerID,
+        answers.engineerEmail,
+        answers.engineerGithub
+      );
+      employees.push(engineer);
+      if (answers.addEmployee === "Yes") {
+        promptUser();
+      } else {
+        // renderHTML()
+      }
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
 }
 
+function addInern(answers) {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "internName",
+        message: "What is the Intern's name?",
+      },
+      {
+        type: "input",
+        name: "internID",
+        message: "What is the intern's ID number?",
+      },
+      {
+        type: "input",
+        name: "internEmail",
+        message: "What is the intern's email address?",
+      },
+      {
+        type: "input",
+        name: "What school does the intern attend?",
+        message: "internSchool",
+      },
+      {
+        type: "list",
+        name: "addEmployee",
+        message: "Would you like to add another employee?",
+        choices: ["Yes", "No"],
+      },
+    ])
+    .then((answers) => {
+      let intern = new Intern(
+        answers.internName,
+        answers.internID,
+        answers.internEmail,
+        answers.internSchool
+      );
+      employees.push(intern);
+      if (answers.addEmployee === "Yes") {
+        promptUser();
+      } else {
+        // renderHTML()
+      }
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+
+function renderHTML() {
+  return writeFileAsync("team.html", render(employees), "utf-8");
+}
+
+promptUser();
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
