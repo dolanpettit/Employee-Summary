@@ -56,7 +56,7 @@ function addManager(answers) {
       {
         type: "input",
         name: "managerOfficeNumber",
-        name: "What is the manager's office number?",
+        message: "What is the manager's office number?",
       },
       {
         type: "list",
@@ -73,10 +73,10 @@ function addManager(answers) {
         answers.managerOfficeNumber
       );
       employees.push(manager);
-      if (answers.addEmployee === "yes") {
+      if (answers.addEmployee === "Yes") {
         promptUser();
       } else {
-        // renderHTML();
+        renderHTML();
       }
     })
     .catch(function (err) {
@@ -125,7 +125,7 @@ function addEngineer(answers) {
       if (answers.addEmployee === "Yes") {
         promptUser();
       } else {
-        // renderHTML()
+        renderHTML();
       }
     })
     .catch(function (err) {
@@ -133,7 +133,7 @@ function addEngineer(answers) {
     });
 }
 
-function addInern(answers) {
+function addIntern(answers) {
   inquirer
     .prompt([
       {
@@ -153,8 +153,8 @@ function addInern(answers) {
       },
       {
         type: "input",
-        name: "What school does the intern attend?",
-        message: "internSchool",
+        name: "internSchool",
+        message: "What school does the intern attend?",
       },
       {
         type: "list",
@@ -174,7 +174,7 @@ function addInern(answers) {
       if (answers.addEmployee === "Yes") {
         promptUser();
       } else {
-        // renderHTML()
+        renderHTML();
       }
     })
     .catch(function (err) {
